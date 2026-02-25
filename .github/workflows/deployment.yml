@@ -1,0 +1,31 @@
+name: deployment job
+on: push
+jobs:
+    test_stage:
+        runs-on: ubuntu-latest
+        steps:
+            - name: get code
+              uses: actions/checkout@v3
+            - name: install node
+              uses: actions/setup-node@v6
+              with:
+                node-version: 24
+            - name: instll dependencies
+              run: npm ci
+            - name: Run tests
+              run: npm test
+    deploy_stage:
+      runs-on: ubuntu-latest
+      steps:
+         - name: get code
+           uses: actions/checkout@v3
+         - name: install node
+           uses: actions/setup-node@v6
+           with:
+            node-version: 24
+         - name: instll dependencies
+           run: npm ci
+         - name: build project
+           run: num run build
+         - name: deploy project
+           run: echo "Deploying...!!!"
