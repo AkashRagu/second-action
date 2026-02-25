@@ -26,6 +26,6 @@ jobs:
          - name: instll dependencies
            run: npm ci
          - name: build project
-           run: num run build
+           run: npm run build
          - name: deploy project
            run: echo "Deploying...!!!"
